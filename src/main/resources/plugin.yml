@@ -1,0 +1,7 @@
+name: ItemsCreator
+version: '${project.version}'
+main: ru.solomka.items.Main
+authors: [ Solomka ]
+commands:
+  item:
+    usage: /item <args...>
