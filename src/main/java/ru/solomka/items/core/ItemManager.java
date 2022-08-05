@@ -25,13 +25,7 @@ public class ItemManager {
     private Object[] args;
 
     private final Yaml file;
-
-    /*
-        file - твой файл, где хранятся предметы
-        args - массив объектов, которые передаются через команду в конструктор, а после используются
-     */
-
-
+    
     public ItemManager(Player p, String material, Object[] args) {
         this.p = p;
         this.material = material;
