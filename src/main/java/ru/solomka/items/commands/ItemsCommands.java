@@ -65,8 +65,8 @@ public class ItemsCommands implements CommandExecutor {
                     return true;
                 }
 
-                itemManager = new ItemManager(player, null, null);
-                itemManager.giveItem(idItem);
+                itemManager = new ItemManager(player, null, new Object[]{idItem});
+                itemManager.giveItem();
                 break;
             }
 

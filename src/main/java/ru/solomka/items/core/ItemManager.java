@@ -3,6 +3,7 @@ package ru.solomka.items.core;
 import lombok.Data;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -33,8 +34,8 @@ public class ItemManager {
         file = FileUtils.getDefaultCfg("items");
     }
 
-    public void giveItem(int id) {
-        if(getIdItemOfParam(SearchItemType.OF_NON_NULL, id) == -1) {
+    public void giveItem() {
+        if(getIdItemOfParam(SearchItemType.OF_NON_NULL, args[0]) == -1) {
             p.sendMessage("Предмет не найден");
             return;
         }
@@ -49,7 +50,7 @@ public class ItemManager {
             p.sendMessage("Не найден пустой слот в инвентаре для выдачи предмета");
             return;
         }
-        p.getInventory().setItem(findSlot.get(), getItem(id));
+        p.getInventory().setItem(findSlot.get(), getItem(Integer.parseInt(args[0].toString())));
     }
 
     public void removeItem() {
@@ -83,7 +84,9 @@ public class ItemManager {
         String material = file.getString("Items." + id + ".Material");
         List<String> lore = file.getStringList("Items." + id + ".Lore");
 
-        return new ItemBuilder(new ItemStack(Material.getMaterial(material))).setName(name).setLore(lore).getReplacedItem();
+        return new ItemBuilder(new ItemStack(Material.getMaterial(material))).setName(name).setLore(lore)
+                        .addFlags(new ItemFlag[]{ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_DESTROYS, ItemFlag.HIDE_ENCHANTS})
+                            .getReplacedItem();
     }
 
     private int findEmptyId() {

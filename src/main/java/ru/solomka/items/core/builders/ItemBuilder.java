@@ -1,6 +1,7 @@
 package ru.solomka.items.core.builders;
 
 import lombok.Getter;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
@@ -18,6 +19,14 @@ public class ItemBuilder {
     public ItemBuilder(@NotNull ItemStack item) {
         this.item = item;
         meta = item.getItemMeta();
+    }
+
+    public ItemBuilder addFlags(ItemFlag[] flags) {
+        for (ItemFlag flag : flags) {
+            if(item.getItemMeta().hasItemFlag(flag))
+                item.getItemMeta().addItemFlags(flag);
+        }
+        return this;
     }
 
     public ItemBuilder setName(String name) {
