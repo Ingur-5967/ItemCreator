@@ -56,7 +56,7 @@ public class ItemManager {
     public void removeItem() {
         int searchedId = getIdItemOfParam(SearchItemType.OF_NAME, args[0].toString());
         if(searchedId == -1) {
-            p.sendMessage("Неудалось удалить предмет!\nПричины: Предмет отсутствует в списке сохраненных");
+            p.sendMessage("Не удалось удалить предмет!\nПричины: Предмет отсутствует в списке сохраненных");
             return;
         }
         file.set("Items." + searchedId, (Object) null);
@@ -65,7 +65,7 @@ public class ItemManager {
 
     public void saveItem() {
         if(toItemStack() == null || getIdItemOfParam(SearchItemType.OF_NAME, args[0].toString()) != -1) {
-            p.sendMessage("\nНеудалось сохранить предмет!\nПричины: Материал предмета указан некорректно или предмет с таким имен уже есть\n");
+            p.sendMessage("\nНе удалось сохранить предмет!\nПричины: Материал предмета указан некорректно или предмет с таким имен уже есть\n");
             return;
         }
 
