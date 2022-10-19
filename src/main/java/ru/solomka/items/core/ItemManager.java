@@ -18,7 +18,6 @@ import java.util.Optional;
 
 import static org.bukkit.ChatColor.*;
 
-@Data
 public class ItemManager {
 
     private final Player p;
